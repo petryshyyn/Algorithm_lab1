@@ -24,17 +24,17 @@ class Graph {
         Set<Integer> setListOfPeople = new LinkedHashSet<Integer>(listOfPeople);
         listOfPeople.removeAll(listOfPeople);
         listOfPeople.addAll(setListOfPeople);
-        Map<Integer, Integer> home = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> listOfPeopleWithTheirTribes = new HashMap<Integer, Integer>();
         int tribeNumber = 0;
 
         for (Integer person : listOfPeople) {
             if (person < 0) {
                 tribeNumber++;
             } else {
-                home.put(person, tribeNumber);
+                listOfPeopleWithTheirTribes.put(person, tribeNumber);
             }
         }
-        System.out.println(home);
+        System.out.println(listOfPeopleWithTheirTribes);
 
         for (int in = 0; in < listOfPeople.size(); in++) {
             if (listOfPeople.get(in) < 0) {
@@ -44,7 +44,7 @@ class Graph {
 
         for (int i = 0; i < listOfPeople.size(); i++) {
             for (int j = i + 1; j < listOfPeople.size(); j++) {
-                if (genderVerification(listOfPeople.get(i), listOfPeople.get(j), home.get(listOfPeople.get(i)), home.get(listOfPeople.get(j)))) {
+                if (genderVerification(listOfPeople.get(i), listOfPeople.get(j), listOfPeopleWithTheirTribes.get(listOfPeople.get(i)), listOfPeopleWithTheirTribes.get(listOfPeople.get(j)))) {
                     System.out.println("(" + listOfPeople.get(i) + " / " + listOfPeople.get(j) + ")");
                     score++;
                 }
